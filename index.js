@@ -3,6 +3,8 @@ const app = express();
 const path = require('path');
 const fs = require('fs');
 
+const images = fs.readdirSync(path.join(__dirname, 'assets'));
+
 app.get('/', (req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
@@ -10,7 +12,6 @@ app.get('/', (req, res) => {
 });
 
 app.get('/random-image', (req, res) => {
-  const images = fs.readdirSync(path.join(__dirname, 'assets'));
   const randomIndex = Math.floor(Math.random() * images.length);
   const randomImage = images[randomIndex];
   res.sendFile(path.join(__dirname, 'assets', randomImage));
