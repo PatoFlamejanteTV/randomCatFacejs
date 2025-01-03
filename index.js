@@ -6,12 +6,6 @@ const fs = require('fs');
 const images = fs.readdirSync(path.join(__dirname, 'assets'));
 
 app.get('/', (req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Please go to /random-image.');
-});
-
-app.get('/random-image', (req, res) => {
   const randomIndex = Math.floor(Math.random() * images.length);
   const randomImage = images[randomIndex];
   res.sendFile(path.join(__dirname, 'assets', randomImage));
