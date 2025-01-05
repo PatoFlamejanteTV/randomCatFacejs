@@ -9,7 +9,7 @@ const images = fs.readdirSync(path.join(__dirname, 'assets')).filter(file => {
   if (IMAGE_ONLY) {
     return path.extname(file).toLowerCase() === '.jpg' || path.extname(file).toLowerCase() === '.png' || path.extname(file).toLowerCase() === '.jpeg' || path.extname(file).toLowerCase() === '.gif' || path.extname(file).toLowerCase() === '.webp';
   } else {
-    return true;
+    return true; // ugly hack but works
   }
 });
 
@@ -23,4 +23,4 @@ app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
 app.listen(3000, () => {
   console.log('Server listening on port 3000');
-});
+}); // you can also change to any port, remember to also update the ports config file (if theres any)
